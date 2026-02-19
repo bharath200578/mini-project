@@ -1,4 +1,5 @@
+streamlit>=1.32.0
 torch
 pandas
 scikit-learn
-streamlit
+altair<5
