@@ -8,13 +8,15 @@ from utils.preprocessing import encode
 MAX_LEN = 20
 
 # Load model and files
-vocab = torch.load("vocab.pth")
 
 with open("label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
+vocab = torch.load("vocab.pth", weights_only=False, map_location="cpu")
+
 model = TinyTransformer(len(vocab))
-model.load_state_dict(torch.load("model.pth"))
+model.load_state_dict(torch.load("model.pth", map_location="cpu"))
+
 model.eval()
 
 # UI
